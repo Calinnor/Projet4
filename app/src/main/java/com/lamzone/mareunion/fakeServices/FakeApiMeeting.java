@@ -7,6 +7,7 @@ import java.util.List;
 public interface FakeApiMeeting {
 
     List<Meeting> getMeeting();
+
     List<Meeting> getTestMeeting();
 
     /**
@@ -14,9 +15,11 @@ public interface FakeApiMeeting {
      */
 
     void deleteMeeting(Meeting meeting);
+
     void deleteTestMeeting(Meeting meeting);
 
     void addNewMeeting(Meeting meeting);
+
     void addNewTestMeeting(Meeting meeting);
 
 }

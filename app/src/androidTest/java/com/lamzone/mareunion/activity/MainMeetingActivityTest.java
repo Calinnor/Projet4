@@ -1,7 +1,6 @@
 package com.lamzone.mareunion.activity;
 
 import android.widget.DatePicker;
-import android.widget.TimePicker;
 
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.matcher.ViewMatchers;
@@ -9,24 +8,16 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import com.lamzone.mareunion.R;
-import com.lamzone.mareunion.controler.activity.AddNewMeetingActivity;
 import com.lamzone.mareunion.controler.activity.MainMeetingActivity;
-import com.lamzone.mareunion.di.DI;
-import com.lamzone.mareunion.fakeServices.FakeApiMeeting;
-import com.lamzone.mareunion.model.Meeting;
-import com.lamzone.mareunion.utils.DeleteViewAction;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.List;
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
@@ -54,11 +45,6 @@ public class MainMeetingActivityTest {
         onView(withId(R.id.list_meetings_for_recyclerView))
                 .check(matches(hasMinimumChildCount(0)));
     }
-
-    /**
-     * class with withItemCount (recycler) and DeleteView are to implement first in utils.
-     */
-
 
     @Test
     public void addMeetingActivityButton_Launch_OneElement_On_AddMeetingActivity() {

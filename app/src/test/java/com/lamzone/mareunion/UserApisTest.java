@@ -44,9 +44,9 @@ public class UserApisTest {
         assertNotNull(execeptedPlaceItem);
     }
 
-    @Test (expected = IndexOutOfBoundsException.class )
+    @Test(expected = IndexOutOfBoundsException.class)
     public void getPlaceItemOutOfList() {
-        PlaceItem expectedPlaceItem = mFakeApiPlace.getPlaceItem().get(mFakeApiPlace.getPlaceItem().size()+1);
+        PlaceItem expectedPlaceItem = mFakeApiPlace.getPlaceItem().get(mFakeApiPlace.getPlaceItem().size() + 1);
         assertTrue(mFakeApiPlace.getPlaceItem().contains(expectedPlaceItem));
     }
 
@@ -60,20 +60,20 @@ public class UserApisTest {
      * tests for Meeting
      */
     @Test
-    public void getMeetingWithSucces(){
+    public void getMeetingWithSucces() {
         Meeting exceptedMeeting = mFakeApiMeeting.getTestMeeting().get(0);
         assertNotNull(exceptedMeeting);
     }
 
-    @Test (expected = IndexOutOfBoundsException.class )
+    @Test(expected = IndexOutOfBoundsException.class)
     public void getMeetingOutOfList() {
-        Meeting exceptedMeeting = mFakeApiMeeting.getTestMeeting().get(mFakeApiMeeting.getTestMeeting().size()+1);
+        Meeting exceptedMeeting = mFakeApiMeeting.getTestMeeting().get(mFakeApiMeeting.getTestMeeting().size() + 1);
         assertTrue(mFakeApiMeeting.getTestMeeting().contains(exceptedMeeting));
     }
 
     @Test
     public void getMeetingWithSuccessSamePlaceItem() {
-        Meeting expectedMeeting= mFakeApiMeeting.getTestMeeting().get(0);
+        Meeting expectedMeeting = mFakeApiMeeting.getTestMeeting().get(0);
         assertEquals(mFakeApiMeeting.getTestMeeting().get(0), expectedMeeting);
     }
 
@@ -98,9 +98,9 @@ public class UserApisTest {
         assertFalse(mFakeApiMeeting.getTestMeeting().contains(meetingToDelete));
     }
 
-    @Test (expected = IndexOutOfBoundsException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void deleteMeetingOutOfListSize() {
-        Meeting meetingToDelete = mFakeApiMeeting.getTestMeeting().get(mFakeApiMeeting.getTestMeeting().size()+1);
+        Meeting meetingToDelete = mFakeApiMeeting.getTestMeeting().get(mFakeApiMeeting.getTestMeeting().size() + 1);
         mFakeApiMeeting.deleteTestMeeting(meetingToDelete);
     }
 
@@ -128,20 +128,17 @@ public class UserApisTest {
         assertNotNull(exceptedPlaceName);
     }
 
-    @Test (expected = IndexOutOfBoundsException.class )
+    @Test(expected = IndexOutOfBoundsException.class)
     public void getFakePlaceNameOutOfList() {
-        String exceptedPlaceName = mFakeApiPlace.getFakePlaceNames().get(mFakeApiPlace.getFakePlaceNames().size()+1);
+        String exceptedPlaceName = mFakeApiPlace.getFakePlaceNames().get(mFakeApiPlace.getFakePlaceNames().size() + 1);
         assertTrue(mFakeApiPlace.getFakePlaceNames().contains(exceptedPlaceName));
     }
 
     @Test
     public void getFakePlaceNameWithSuccessSamePlaceItem() {
-        String exceptedPlaceName= mFakeApiPlace.getFakePlaceNames().get(3);
+        String exceptedPlaceName = mFakeApiPlace.getFakePlaceNames().get(3);
         assertEquals(mFakeApiPlace.getFakePlaceNames().get(3), exceptedPlaceName);
     }
-
-
-
 
 
 }
