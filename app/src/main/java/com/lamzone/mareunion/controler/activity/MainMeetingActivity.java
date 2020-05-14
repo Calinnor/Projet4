@@ -75,17 +75,29 @@ public class MainMeetingActivity extends AppCompatActivity implements DatePicker
         initEmptyList();
     }
 
+    private void initEmptyList() {
+        mFakeApiMeeting.getMeeting().clear();
+        myMeetingAdapter.updateMeetings(mFakeApiMeeting.getMeeting());
+        selectVisibility();
+    }
+
+    private void selectVisibility() {
+        if (mFakeApiMeeting.getMeeting().size() == 0) {
+            textViewNothingToShow.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
+        } else {
+            textViewNothingToShow.setVisibility(View.GONE);
+            mRecyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void initList() {
         myMeetingAdapter = new MyMeetingAdapter(mFakeApiMeeting.getMeeting());
         mRecyclerView.setAdapter(myMeetingAdapter);
         selectVisibility();
     }
 
-    private void initEmptyList() {
-        mFakeApiMeeting.getMeeting().clear();
-        myMeetingAdapter.updateMeetings(mFakeApiMeeting.getMeeting());
-        selectVisibility();
-    }
+
 
     @Override
     public void onResume() {
@@ -191,15 +203,7 @@ public class MainMeetingActivity extends AppCompatActivity implements DatePicker
         mRecyclerView.setAdapter(new MyMeetingAdapter(mMeetingDateFiltered));
     }
 
-    private void selectVisibility() {
-        if (mFakeApiMeeting.getMeeting().size() == 0) {
-            textViewNothingToShow.setVisibility(View.VISIBLE);
-            mRecyclerView.setVisibility(View.GONE);
-        } else {
-            textViewNothingToShow.setVisibility(View.GONE);
-            mRecyclerView.setVisibility(View.VISIBLE);
-        }
-    }
+
 
 
 }

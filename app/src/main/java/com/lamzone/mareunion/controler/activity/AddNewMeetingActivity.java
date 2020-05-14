@@ -113,6 +113,16 @@ public class AddNewMeetingActivity extends AppCompatActivity implements TimePick
         mMeetingHour = String.valueOf(timeDialogBox);
     }
 
+    private void addTimeToMeeting() {
+        timeDialogBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timePicker = new TimePickeFragment();
+                timePicker.show(getSupportFragmentManager(), "timePicker");
+            }
+        });
+    }
+
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         if (month < 10 && dayOfMonth < 10) {
@@ -127,18 +137,6 @@ public class AddNewMeetingActivity extends AppCompatActivity implements TimePick
         mMeetingDate = String.valueOf(enterDate.getText());
     }
 
-    public void addNewMeeting() {
-        Meeting reunion = new Meeting(clickedColorPlaceTag,
-                mObjectOfMeeting,
-                "- " + timeDialogBox.getText().toString() + " -",
-                placeChoice.getText().toString(),
-                mParticipants,
-                enterDate.getText().toString()
-        );
-        mFakeApiMeeting.addNewMeeting(reunion);
-        finish();
-    }
-
     public void addDateToMeeting() {
         enterDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,19 +147,6 @@ public class AddNewMeetingActivity extends AppCompatActivity implements TimePick
         });
     }
 
-    private void addTimeToMeeting() {
-        timeDialogBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogFragment timePicker = new TimePickeFragment();
-                timePicker.show(getSupportFragmentManager(), "timePicker");
-            }
-        });
-    }
-
-    private void initPlacesList() {
-        mPlaceItemsList = new ArrayList<>(mFakeApiPlace.getPlaceItem());
-    }
 
     private void addNewPlace() {
         PlaceAdapter mPlaceAdapter = new PlaceAdapter(this, mPlaceItemsList);
@@ -179,6 +164,10 @@ public class AddNewMeetingActivity extends AppCompatActivity implements TimePick
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void initPlacesList() {
+        mPlaceItemsList = new ArrayList<>(mFakeApiPlace.getPlaceItem());
     }
 
     @Override
@@ -220,6 +209,18 @@ public class AddNewMeetingActivity extends AppCompatActivity implements TimePick
     private void configureRecyclerView() {
         mMailRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mMailRecyclerView.setAdapter(new MailListRecyclerViewAdapter(mMailsList, this));
+    }
+
+    public void addNewMeeting() {
+        Meeting reunion = new Meeting(clickedColorPlaceTag,
+                mObjectOfMeeting,
+                "- " + timeDialogBox.getText().toString() + " -",
+                placeChoice.getText().toString(),
+                mParticipants,
+                enterDate.getText().toString()
+        );
+        mFakeApiMeeting.addNewMeeting(reunion);
+        finish();
     }
 
     private void saveNewMeeting() {
