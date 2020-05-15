@@ -4,11 +4,9 @@ import com.lamzone.mareunion.model.Meeting;
 
 import java.util.List;
 
-public interface FakeApiMeeting {
+public interface ApiMeeting {
 
     List<Meeting> getMeeting();
-
-    List<Meeting> getTestMeeting();
 
     /**
      * @param meeting dont forget to put param for methods !(
@@ -16,11 +14,9 @@ public interface FakeApiMeeting {
 
     void deleteMeeting(Meeting meeting);
 
-    void deleteTestMeeting(Meeting meeting);
-
     void addNewMeeting(Meeting meeting);
 
-    void addNewTestMeeting(Meeting meeting);
+    //ajouter les fonctions filtre ici
 
 }
 
